@@ -62,7 +62,7 @@ jobs:
               cd jpeg-9e &&
               ./configure --prefix=$PREFIX &&
               make &&
-              sudo make install &&
+              make install &&
               echo "********************************************" &&
               ls -lhrt $GITHUB_WORKSPACE &&
               echo "********************************************" &&
