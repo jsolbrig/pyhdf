@@ -47,7 +47,7 @@ jobs:
             CIBW_ARCHS_WINDOWS: 'AMD64'  # restrict to 64bit builds
             # (mac-os) Install hdf4 from sources
             CIBW_BEFORE_ALL_MACOS: >
-              brew install ninja &&
+              brew install jpeg ninja &&
               cd /tmp &&
               git clone --depth 1 --branch hdf-4_2_16 https://github.com/HDFGroup/hdf4.git &&
               mkdir build && cd build &&
