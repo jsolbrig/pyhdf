@@ -48,10 +48,10 @@ jobs:
             # (mac-os) Install hdf4 from sources
             CIBW_BEFORE_ALL_MACOS: >
               brew install gcc@12 ninja &&
-              export MACOSX_DEPLOYMENT_TARGET=11 &&  # Build binaries compatible with macos v11 and above
+              export MACOSX_DEPLOYMENT_TARGET=11 &&
               export HOMEBREW_CFLAGS="-mmacosx-version-min=11.0" &&
               export HOMEBREW_LDFLAGS="-mmacosx-version-min=11.0" &&
-              brew install --build-from-source jpeg &&  # Build jpeg from source for macos v11 compatibility
+              brew install --build-from-source jpeg &&
               cd /tmp &&
               git clone --depth 1 --branch hdf-4_2_16 https://github.com/HDFGroup/hdf4.git &&
               mkdir build && cd build &&
