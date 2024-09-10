@@ -119,9 +119,11 @@ jobs:
             with:
               path: ./wheelhouse/
 
-          - name: Print wheelhouse contents
+          - name: Collapse wheelhouse directory structure
             run: |
-                ls -lhrt ./wheelhouse/
+                for file in $(find ./wheelhouse/ -type f); do
+                    mv -v $file ./wheelhouse/
+                find ./wheelhouse/ -type d -exec rmdir {} +
 
           - name: Publish a Python distribution to Test PyPI
             uses: pypa/gh-action-pypi-publish@release/v1
