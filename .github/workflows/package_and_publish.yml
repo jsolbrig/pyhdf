@@ -11,7 +11,7 @@ jobs:
         strategy:
           fail-fast: true
           matrix:
-            os: [windows-latest, ubuntu-latest, macos-latest]
+            os: [windows-latest, ubuntu-latest, macos-13, macos-latest]
             cibw_archs: ["auto"]
         env:
           CIBW_SKIP: "*-musllinux_* cp36-* pp3*-win_*"
@@ -47,7 +47,11 @@ jobs:
             CIBW_ARCHS_WINDOWS: 'AMD64'  # restrict to 64bit builds
             # (mac-os) Install hdf4 from sources
             CIBW_BEFORE_ALL_MACOS: >
-              brew install gcc@12 jpeg ninja &&
+              brew install gcc@12 ninja &&
+              export MACOSX_DEPLOYMENT_TARGET=11 &&  # Build binaries compatible with macos v11 and above
+              export HOMEBREW_CFLAGS="-mmacosx-version-min=11.0" &&
+              export HOMEBREW_LDFLAGS="-mmacosx-version-min=11.0" &&
+              brew install --build-from-source jpeg &&  # Build jpeg from source for macos v11 compatibility
               cd /tmp &&
               git clone --depth 1 --branch hdf-4_2_16 https://github.com/HDFGroup/hdf4.git &&
               mkdir build && cd build &&
