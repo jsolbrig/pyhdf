@@ -123,6 +123,7 @@ jobs:
             run: |
                 for file in $(find ./wheelhouse/ -type f); do
                     mv -v $file ./wheelhouse/
+                done
                 find ./wheelhouse/ -type d -exec rmdir {} +
 
           - name: Publish a Python distribution to Test PyPI
