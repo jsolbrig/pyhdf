@@ -58,11 +58,8 @@ jobs:
               ../hdf4/configure --enable-hdf4-xdr --enable-shared --disable-static --disable-fortran --disable-netcdf --enable-production --with-zlib --prefix=/tmp/hdf4 &&
               export CPPFLAGS="${CPPFLAGS} -I/tmp/hdf4/include" &&
               export LDFLAGS="${LDFLAGS} -L/tmp/hdf4/lib" &&
-              echo "export CC=${CC}" >> ~/.bash_profile &&
-              echo "export CXX=${CXX}" >> ~/.bash_profile &&
-              echo "export CPPFLAGS='${CPPFLAGS} -I/tmp/hdf4/include'" >> ~/.bash_profile &&
-              echo "export LDFLAGS='${LDFLAGS} -L/tmp/hdf4/lib'" >> ~/.bash_profile &&
               make install
+            CIBW_ENVIRONMENT_MACOS: CC=$CC CXX=$CXX CPPFLAGS=$CPPFLAGS LDFLAGS=$LDFLAGS
             CIBW_BEFORE_ALL_WINDOWS: >
               conda config --set always_yes yes --set changeps1 no --set auto_update_conda no --set safety_checks disabled &&
               conda install -q hdf4
