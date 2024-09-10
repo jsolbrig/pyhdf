@@ -81,7 +81,7 @@ jobs:
             cp dist/*.whl wheelhouse
         - uses: actions/upload-artifact@v4
           with:
-            name: wheelhouse
+            name: wheelhouse-${{ github.job }}-${{ github.run_id }}
             path: wheelhouse
 
     publish:
@@ -104,7 +104,7 @@ jobs:
 
           - uses: actions/upload-artifact@v4
             with:
-              name: wheelhouse
+              name: wheelhouse-${{ github.job }}-${{ github.run_id }}
               path: wheelhouse
 
           - name: Publish SDIST to PyPI  # there are some problems if sdist is not pushed first
@@ -118,7 +118,7 @@ jobs:
           - name: Download all the wheels
             uses: actions/download-artifact@v4
             with:
-              name: wheelhouse
+              name: wheelhouse-${{ github.job }}-${{ github.run_id }}
               path: ./wheelhouse/
 
           - name: Publish a Python distribution to Test PyPI
