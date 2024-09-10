@@ -53,9 +53,9 @@ jobs:
               mkdir build && cd build &&
               export CPPFLAGS="-I$(brew --prefix jpeg)/include" &&
               export LDFLAGS="-L$(brew --prefix jpeg)/lib" &&
-              ../hdf4/configure --enable-hdf4-xdr --enable-shared --disable-static --disable-fortran --disable-netcdf --enable-production --with-zlib --prefix=/home/hdf4 &&
-              export CPPFLAGS="${CPPFLAGS} -I/home/hdf4/include" &&
-              export LDFLAGS="${LDFLAGS} -L/home/hdf4/lib" &&
+              ../hdf4/configure --enable-hdf4-xdr --enable-shared --disable-static --disable-fortran --disable-netcdf --enable-production --with-zlib --prefix=/tmp/hdf4 &&
+              export CPPFLAGS="${CPPFLAGS} -I/tmp/hdf4/include" &&
+              export LDFLAGS="${LDFLAGS} -L/tmp/hdf4/lib" &&
               make install
             CIBW_BEFORE_ALL_WINDOWS: >
               conda config --set always_yes yes --set changeps1 no --set auto_update_conda no --set safety_checks disabled &&
