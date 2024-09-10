@@ -59,7 +59,7 @@ jobs:
               export CPPFLAGS="${CPPFLAGS} -I/tmp/hdf4/include" &&
               export LDFLAGS="${LDFLAGS} -L/tmp/hdf4/lib" &&
               make install
-            CIBW_ENVIRONMENT_MACOS: CC=$CC CXX=$CXX CPPFLAGS=$CPPFLAGS LDFLAGS=$LDFLAGS
+            CIBW_ENVIRONMENT_MACOS: CC=gcc-12 CXX=g++-12 CPPFLAGS="-I$(brew --prefix jpeg)/include -I/tmp/hdf4/include" LDFLAGS="-L$(brew --prefix jpeg)/lib -L/tmp/hdf4/lib"
             CIBW_BEFORE_ALL_WINDOWS: >
               conda config --set always_yes yes --set changeps1 no --set auto_update_conda no --set safety_checks disabled &&
               conda install -q hdf4
