@@ -2,6 +2,7 @@ name: PyPI publish
 
 on:
   push:
+  workflow_dispatch:
 
 jobs:
     packages:
