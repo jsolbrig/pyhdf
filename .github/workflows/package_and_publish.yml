@@ -51,8 +51,8 @@ jobs:
               cd /tmp &&
               git clone --depth 1 --branch hdf-4_2_16 https://github.com/HDFGroup/hdf4.git &&
               mkdir build && cd build &&
-              export CPPFLAGS="-I$(brew --prefix jpeg)/include"
-              export LDFLAGS="-L$(brew --prefix jpeg)/lib"
+              export CPPFLAGS="-I$(brew --prefix jpeg)/include" &&
+              export LDFLAGS="-L$(brew --prefix jpeg)/lib" &&
               ../hdf4/configure --enable-hdf4-xdr --enable-shared --disable-static --disable-fortran --disable-netcdf --enable-production --with-zlib --prefix=/usr/local &&
               make install
             CIBW_BEFORE_ALL_WINDOWS: >
