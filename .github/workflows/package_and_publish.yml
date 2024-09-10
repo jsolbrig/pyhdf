@@ -63,6 +63,9 @@ jobs:
               ./configure --prefix=$PREFIX &&
               make &&
               sudo make install &&
+              echo "********************************************" &&
+              ls -lhrt $GITHUB_WORKSPACE &&
+              echo "********************************************" &&
               cd .. &&
               git clone --depth 1 --branch hdf-4_2_16 https://github.com/HDFGroup/hdf4.git &&
               mkdir build && cd build &&
