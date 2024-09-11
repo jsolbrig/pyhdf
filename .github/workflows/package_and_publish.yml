@@ -48,7 +48,7 @@ jobs:
             #          Target macos version of 11 to allow this to work for all subsequent versions
             #          Use GCC v12 to avoid deprecations
             CIBW_BEFORE_ALL_MACOS: >
-              brew install gcc@12 ninja &&
+              brew install ninja &&
               export PREFIX=/tmp/pkgs
               export MACOSX_DEPLOYMENT_TARGET=11.0 &&
               export CC=gcc-12 &&
@@ -121,7 +121,7 @@ jobs:
 
           - name: Collapse wheelhouse directory structure
             run: |
-                for file in $(find ./wheelhouse/ -type f); do
+                for file in $(find ./wheelhouse/ -mindepth 2 -type f); do
                     mv -v $file ./wheelhouse/
                 done
                 find ./wheelhouse/ -type d -exec rmdir {} +
