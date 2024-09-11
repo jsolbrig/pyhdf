@@ -30,7 +30,7 @@ jobs:
             python-version: ${{ matrix.python }}
 
         - name: Install libhdf4-dev (macos-latest)
-          if: matrix.os == 'macos-latest'
+          if: startsWith(matrix.os, 'macos')
           run: |
               brew install gcc@12 ninja &&
               export MACOSX_DEPLOYMENT_TARGET=11.0 &&
