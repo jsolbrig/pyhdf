@@ -13,8 +13,8 @@ jobs:
         runs-on: ${{ matrix.os }}
         env:
           PREFIX: /tmp/pkgs
-          CPPFLAGS: -I${{ env.PREFIX }}/include
-          LDFLAGS: -L${{ env.PREFIX }}/lib
+          CPPFLAGS: -I/tmp/pkgs/include
+          LDFLAGS: -L/tmp/pkgs/lib
         strategy:
           fail-fast: true
           matrix:
