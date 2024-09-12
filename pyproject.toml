@@ -6,7 +6,7 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pyhdf"
+name = "testing_pyhdf"
 version = "0.11.4"
 description = "Python interface to the NCSA HDF4 library"
 readme = "README.md"
