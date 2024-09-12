@@ -125,7 +125,7 @@ jobs:
                 for file in $(find . -mindepth 2 -type f); do
                     mv -v $file .
                 done
-                find . -type d -exec rmdir {} +
+                find . -mindepth 1 -type d -exec rmdir {} +
 
           - name: Publish a Python distribution to Test PyPI
             uses: pypa/gh-action-pypi-publish@release/v1
