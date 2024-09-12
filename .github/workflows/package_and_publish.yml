@@ -121,10 +121,11 @@ jobs:
 
           - name: Collapse wheelhouse directory structure
             run: |
-                for file in $(find ./wheelhouse/ -mindepth 2 -type f); do
-                    mv -v $file ./wheelhouse/
+                cd ./wheelhouse/
+                for file in $(find . -mindepth 2 -type f); do
+                    mv -v $file .
                 done
-                find ./wheelhouse/ -mindepth 2 -type d -exec rmdir {} +
+                find . -type d -exec rmdir {} +
 
           - name: Publish a Python distribution to Test PyPI
             uses: pypa/gh-action-pypi-publish@release/v1
