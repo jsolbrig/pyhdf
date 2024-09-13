@@ -49,8 +49,7 @@ jobs:
             #          Use GCC v12 to avoid deprecations
             CIBW_BEFORE_ALL_MACOS: >
               brew install ninja &&
-              export PREFIX=/tmp/pkgs
-              export MACOSX_DEPLOYMENT_TARGET=11.0 &&
+              export PREFIX=/tmp/pkgs &&
               export CC=gcc-12 &&
               export CXX=g++-12 &&
               export CPPFLAGS="-I${PREFIX}/include" &&
